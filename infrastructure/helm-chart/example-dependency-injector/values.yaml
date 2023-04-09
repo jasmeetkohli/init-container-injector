@@ -1,0 +1,35 @@
+# Default values for example-dependency-injector.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+namespace: some-space
+
+image:
+  repository: <>
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+imagePullSecrets:
+  - name: <>
+
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  name: "dependency-injector-serviceaccount"
+
+service:
+  type: ClusterIP
+  port: 8080
+
+resources: 
+  limits:
+    cpu: 500m
+    memory: 1024Mi
+  requests:
+    cpu: 200m
+    memory: 512Mi
+

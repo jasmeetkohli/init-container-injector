@@ -1,0 +1,21 @@
+
+  - name: init-example-dependency
+    image: lightruncom/koolkits:python
+    args:
+      - /bin/sh 
+      - -c 
+      - |
+        echo "dependencies :: {depends_on}";
+
+        for dependency in $(echo {depends_on} | sed "s/,/ /g"); do
+          echo "checking response code for $dependency";
+          while true; do
+            res=$(curl -sw '%{{http_code}}' "http://$dependency" -o /dev/null) 
+            if [ $res -eq "200" ]; then
+              echo "got 200"
+              break;
+            fi
+            echo "sleeping for 5 seconds..."
+            sleep 5;
+          done
+        done
