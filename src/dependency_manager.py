@@ -73,7 +73,7 @@ async def cleanup_fn(logger, **_):
 # get the init_contianer definition based on dependencies found
 def get_init_container(logger, dependencies):
 
-    init_path = os.path.join(os.path.dirname(__file__), '../resources', 'init_container.yaml')
+    init_path = os.path.join(os.path.dirname(__file__), '../resources', 'init-example-dependency.yaml')
     tmpl = open(init_path, 'rt').read()
     dependencies = ",".join(dependencies)
     init_data = tmpl.format(http_code="http_code", depends_on=dependencies)
