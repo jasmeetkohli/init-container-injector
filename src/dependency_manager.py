@@ -17,13 +17,6 @@ class Color:
     ENDC = '\033[0m'
 
 
-# define words/sentences to be used and referred in tests
-E2E_STARTUP_STOP_WORDS = ['Served by the background task.']
-E2E_CLEANUP_STOP_WORDS = ['Hung tasks', 'Root tasks']
-E2E_SUCCESS_COUNTS = {'startup_fn_simple': 1, 'startup_fn_retried': 1, 'cleanup_fn': 1}
-E2E_FAILURE_COUNTS = {}
-
-
 @kopf.on.login(errors=kopf.ErrorsMode.PERMANENT)
 async def login_fn(**_):
     print('Logging in in 2s...')
